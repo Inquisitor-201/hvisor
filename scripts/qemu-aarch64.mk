@@ -39,21 +39,6 @@ QEMU_ARGS += -netdev user,id=n0,hostfwd=tcp::5555-:22 -device virtio-net-device,
 QEMU_ARGS += -chardev pty,id=Xa0038000
 QEMU_ARGS += -device virtio-serial-device -device virtconsole,chardev=Xa0038000
 
-# baremetal:
-# 	sudo qemu-system-aarch64 \
-# 		-machine virt,secure=on,gic-version=3,virtualization=on \
-# 		-cpu cortex-a57 \
-# 		-smp 4 \
-# 		-m 2G \
-# 		-nographic \
-# 		-kernel $(root_kernel) \
-# 		-append "root=/dev/vda mem=1536m" \
-# 		-drive if=none,file=$(FSIMG1),id=hd1,format=raw \
-# 		-device virtio-blk-device,drive=hd1 \
-# 		-netdev tap,id=net0,ifname=tap0,script=no,downscript=no \
-# 		-device virtio-net-device,netdev=net0,mac=52:55:00:d1:55:01 \
-# 		-device virtio-serial-device -chardev pty,id=serial3 -device virtconsole,chardev=serial3
-
 $(hvisor_bin): elf
 	@if ! command -v mkimage > /dev/null; then \
 		sudo apt update && sudo apt install u-boot-tools; \

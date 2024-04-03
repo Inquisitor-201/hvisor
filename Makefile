@@ -75,23 +75,3 @@ clean:
 	cargo clean
 
 include scripts/qemu-$(ARCH).mk
-
-# -drive if=none,file=fsimg1,id=hd1,format=raw
-
-# echo " go 0x7fc00000 " | \
-# -bios imgs/u-boot/u-boot.bin \
-# -append "root=/dev/vda mem=768M"
-# -device loader,file="$(hvisor_bin)",addr=0x7fc00000,force-raw=on\
-# -drive file=./qemu-test/host/rootfs.qcow2,discard=unmap,if=none,id=disk,format=qcow2 \
-# -drive if=none,file=fsimg,id=disk,format=raw \
-# -net nic \
-# -net user,hostfwd=tcp::$(PORT)-:22
-
-# dhcp
-# pci enum
-# virtio scan
-# virtio info
-
-# ext4ls virtio 1
-# ext4load virtio 1 0x7fc00000 hvisor.bin; go 0x7fc00000
-
